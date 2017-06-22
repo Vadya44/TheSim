@@ -1,11 +1,6 @@
 package model;
-
-import android.graphics.Bitmap;
 import java.util.Timer;
-import android.graphics.Color;
-import android.graphics.Canvas;
-import android.graphics.BitmapFactory;
-import android.app.Application;
+import android.graphics.*;
 import android.content.res.Resources;
 
 /**
