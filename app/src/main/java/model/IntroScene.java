@@ -8,12 +8,12 @@ import android.content.res.Resources;
  */
 
 public final class IntroScene{
-    private static Bitmap _bitmap;
-    private static Timer _timer = new Timer();
+    private static Bitmap mbitmap;
+    private static Timer mtimer = new Timer();
     public static void OnDraw(Canvas canvas)
     {
         canvas.drawColor(Color.WHITE);
-        canvas.drawBitmap(_bitmap, 0,
+        canvas.drawBitmap(mbitmap, 0,
                 (int)(GameView.mainHidth * 0.2 * GameView.Factor), null);
     }
     public static void Show()
