@@ -1,6 +1,6 @@
 package controller;
 
-import model.scenes.IScene;
+import model.scenes.*;
 import java.util.*;
 
 /**
@@ -10,10 +10,7 @@ import java.util.*;
  */
 
 public abstract class Handler implements IHandler {
-    List<IScene> scenes = new LinkedList<IScene>();
-    public Handler(List<IScene> scenes){
-        this.scenes = scenes;
-    }
+    Scene mactiveScene;
     public abstract void justTap(float x, float y);
     public abstract void movedTouch(float x1, float y1, float x2, float y2);
 }

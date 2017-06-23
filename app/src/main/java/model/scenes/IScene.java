@@ -5,9 +5,9 @@ package model.scenes;
  */
 
 public interface IScene {
-    public void show();
-    public void hide();
-    public void justTap();
-    public void movedTouch();
-    public void onDraw();
+    void show();
+    void hide();
+    void justTap();
+    void movedTouch();
+    void onDraw();
 }

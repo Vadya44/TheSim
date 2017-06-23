@@ -5,5 +5,9 @@ package model.scenes;
  */
 
 public abstract class Scene implements IScene {
-    public
+    public abstract void show();
+    public abstract void hide();
+    public abstract void onDraw();
+    public abstract void justTap(float x, float y);
+    public abstract void movedTouch(float x1, float y1, float x2, float y2);
 }
