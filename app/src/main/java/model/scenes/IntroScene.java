@@ -19,22 +19,21 @@ public final class IntroScene extends Scene{
     public IntroScene(Bitmap bitmap)
     {
         mbitmap = bitmap;
-        show();
+        //show();
     }
     public void onDraw(Canvas canvas)
     {
         canvas.drawColor(Color.WHITE);
-        canvas.drawBitmap(mbitmap, 0,
-               0, null);
+        canvas.drawBitmap(mbitmap, 0 ,0 , null);
     }
     public void show()
     {
-        onDraw(new Canvas());
+        /*
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {}
         hide();
-
+        */
     }
     public void hide()
     {
