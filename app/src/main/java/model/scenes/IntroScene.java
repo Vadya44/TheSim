@@ -1,5 +1,8 @@
 package model.scenes;
+import android.app.Application;
 import android.graphics.*;
+import android.content.Context;
+import android.content.res.Resources;
 import java.util.*;
 import android.content.res.Resources;
 
@@ -13,17 +16,24 @@ import android.content.res.Resources;
 public final class IntroScene extends Scene{
 
     private static Bitmap mbitmap;
+    public IntroScene(Bitmap bitmap)
+    {
+        mbitmap = bitmap;
+        show();
+    }
     public void onDraw(Canvas canvas)
     {
         canvas.drawColor(Color.WHITE);
-        //canvas.drawBitmap(mbitmap, 0,
-          //      (int)(GameView.mainHidth * 0.2 * GameView.Factor), null);
+        canvas.drawBitmap(mbitmap, 0,
+               0, null);
     }
     public void show()
     {
+        onDraw(new Canvas());
         try {
             Thread.sleep(2000);
-        } catch (InterruptedException e) {};
+        } catch (InterruptedException e) {}
+        hide();
 
     }
     public void hide()
