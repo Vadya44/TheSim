@@ -1,4 +1,4 @@
-package model;
+package model.scenes;
 import java.util.Timer;
 import android.graphics.*;
 import android.content.res.Resources;

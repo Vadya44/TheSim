@@ -1,4 +1,4 @@
-package model;
+package model.scenes;
 
 /**
  * Created by Vadya on 23.06.17.
