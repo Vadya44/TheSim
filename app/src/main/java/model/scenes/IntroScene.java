@@ -1,6 +1,6 @@
 package model.scenes;
-import java.util.Timer;
 import android.graphics.*;
+import java.util.*;
 import android.content.res.Resources;
 
 /**
@@ -13,35 +13,30 @@ import android.content.res.Resources;
 public final class IntroScene extends Scene{
 
     private static Bitmap mbitmap;
-    private static Timer mtimer = new Timer();
-    public static void OnDraw(Canvas canvas)
+    public static void onDraw(Canvas canvas)
     {
         canvas.drawColor(Color.WHITE);
-        canvas.drawBitmap(mbitmap, 0,
-                (int)(GameView.mainHidth * 0.2 * GameView.Factor), null);
+        //canvas.drawBitmap(mbitmap, 0,
+          //      (int)(GameView.mainHidth * 0.2 * GameView.Factor), null);
     }
     public static void Show()
     {
-        GameView.activeScene = "Intro";
-        _bitmap = BitmapFactory.decodeResource(Resources.getSystem(), Resource.Drawable.FKNV);
-        _bb = Bitmap.CreateScaledBitmap(_b, (int)(GameView.mainWidth * GameView.Factor),
-                (int)(0.6 * GameView.mainHidth * GameView.Factor), false);
-        GameView.DrawEvent += OnDraw;
-        aTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
-        aTimer.Interval = 1000;
-        aTimer.Enabled = true;
-    }
-    private static void OnTimedEvent(object source, ElapsedEventArgs e)
-    {
-        aTimer.Enabled = false;
-        Hide();
-        MainMenu.Show();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {};
+
     }
     public static void Hide()
     {
-        GameView.DrawEvent -= OnDraw;
-        _bb = null;
-        _b = null;
-        aTimer.Close();
+
+    }
+    /**
+    Touch event's are don't working in this scene
+     */
+    public void movedTouch(float x1, float y1, float x2, float y2) {
+        return;
+    }
+    public void justTap(float x, float y){
+        return;
     }
 }
