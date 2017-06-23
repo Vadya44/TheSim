@@ -8,7 +8,7 @@ import android.graphics.Canvas;
 public interface IScene {
     void show();
     void hide();
-    void justTap();
-    void movedTouch();
+    void justTap(float x, float y);
+    void movedTouch(float x1, float y1, float x2, float y2);
     void onDraw(Canvas canvas);
 }

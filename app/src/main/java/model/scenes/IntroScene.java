@@ -13,20 +13,20 @@ import android.content.res.Resources;
 public final class IntroScene extends Scene{
 
     private static Bitmap mbitmap;
-    public static void onDraw(Canvas canvas)
+    public void onDraw(Canvas canvas)
     {
         canvas.drawColor(Color.WHITE);
         //canvas.drawBitmap(mbitmap, 0,
           //      (int)(GameView.mainHidth * 0.2 * GameView.Factor), null);
     }
-    public static void Show()
+    public void show()
     {
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {};
 
     }
-    public static void Hide()
+    public void hide()
     {
 
     }
