@@ -61,7 +61,7 @@ public final class GameView extends View {
         centerX = width / 2;
         centerY = heigth / 2;
         mainHidth = mainHidth - (mainHidth * change /
-                Resources.getSystem().getDisplayMetrics().heightPixels - factor * 5);
+                Resources.getSystem().getDisplayMetrics().heightPixels - factor * 10);
         factor = Math.max((float) width / mainWidth, (float) heigth / mainHidth);
         Bitmap bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
                 R.drawable.intro), (int)(factor*mainWidth), (int)(factor*mainHidth), false );
