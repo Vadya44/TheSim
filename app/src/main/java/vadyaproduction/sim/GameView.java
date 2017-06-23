@@ -1,16 +1,19 @@
 package vadyaproduction.sim;
 
-import android.content.*;
+import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.*;
-import android.util.*;
-import android.view.View;
-import java.lang.*;
-import model.controller.GestureHandler;
-import model.scenes.*;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.View;
 
-public final class GameView extends View {
+import model.controller.GestureHandler;
+import model.scenes.IntroScene;
+import model.scenes.Scene;
+
+public final class GameView extends View{
     private static final int InvalidPointerId = -1;
     private int mactivePointerId = InvalidPointerId;
     private float mlastTouchX;
@@ -41,8 +44,7 @@ public final class GameView extends View {
         init(attrs, 0);
     }
 
-    @Override
-    protected void onDraw(Canvas canvas) {
+    public void onDraw(Canvas canvas) {
         activeScene.onDraw(canvas);
     }
 
@@ -61,17 +63,16 @@ public final class GameView extends View {
                 Resources.getSystem().getDisplayMetrics().heightPixels - factor * 10);
         factor = Math.max((float) width / mainWidth, (float) heigth / mainHidth);
         Bitmap bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
-                R.drawable.intro), (int)(factor*mainWidth), (int)(factor*mainHidth), false );
+                R.drawable.intro), (int) (factor * mainWidth), (int) (factor * mainHidth), false);
         introScene = new IntroScene(bitmap);
         activeScene = introScene;
         gestureHandler = new GestureHandler(activeScene);
     }
 
-
-    public boolean OnTouchEvent(MotionEvent ev) {
+    @Override
+    public boolean onTouchEvent(MotionEvent ev) {
         MotionEvent action = ev;
         int pointerIndex = 0;
-
         if (ev.getPointerCount() > 1) return false;
         switch (ev.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
@@ -103,6 +104,7 @@ public final class GameView extends View {
         }
         return true;
     }
+
     private int getNavigationSize() {
         if (!checked) {
             checked = true;
@@ -112,7 +114,6 @@ public final class GameView extends View {
                 return resources.getDimensionPixelSize(resourceId);
             }
             return 0;
-        }
-        else return 0;
+        } else return 0;
     }
 }
