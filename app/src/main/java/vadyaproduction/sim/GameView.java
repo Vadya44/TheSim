@@ -2,15 +2,12 @@ package vadyaproduction.sim;
 
 import android.content.*;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
+import android.graphics.*;
 import android.util.*;
 import android.view.View;
 import java.lang.*;
 import model.controller.GestureHandler;
-import model.scenes.IntroScene;
+import model.scenes.*;
 import android.view.MotionEvent;
 
 public final class GameView extends View {
@@ -22,12 +19,13 @@ public final class GameView extends View {
     private float mposY = 0;
     private byte misMoved = 0;
     private GestureHandler handler;
-    public static String activeScene = "";
     public static float mainWidth = 720;
     public static float mainHidth = 1280;
     public static float centerX;
     public static float centerY;
     public static float factor = 1;
+    private static boolean checked = false;
+    private Scene activeScene;
 
     // Classes
     private IntroScene introScene;
@@ -45,8 +43,7 @@ public final class GameView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.drawColor(Color.BLUE);
-        introScene.onDraw(canvas);
+        activeScene.onDraw(canvas);
     }
 
     public GameView(Context context, AttributeSet attrs, int defStyle) {
@@ -66,7 +63,8 @@ public final class GameView extends View {
         Bitmap bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
                 R.drawable.intro), (int)(factor*mainWidth), (int)(factor*mainHidth), false );
         introScene = new IntroScene(bitmap);
-
+        activeScene = introScene;
+        gestureHandler = new GestureHandler(activeScene);
     }
 
 
@@ -90,11 +88,11 @@ public final class GameView extends View {
                 break;
             case MotionEvent.ACTION_UP:
                 if (misMoved == 0) {
-                    //TouchHandler.JustTouch(mlastTouchX / factor, mlastTouchY / factor);
+                    gestureHandler.justTap(mlastTouchX / factor, mlastTouchY / factor);
                     break;
                 } else {
-                    //TouchHandler.MovedTouch(mlastTouchX / factor, mlastTouchY / factor,
-                      //      ev.getX(pointerIndex) / factor, ev.getY(pointerIndex) / factor);
+                    gestureHandler.movedTouch(mlastTouchX / factor, mlastTouchY / factor,
+                            ev.getX(pointerIndex) / factor, ev.getY(pointerIndex) / factor);
                     misMoved = 0;
                     break;
 
@@ -105,13 +103,16 @@ public final class GameView extends View {
         }
         return true;
     }
-    private int getNavigationSize()
-    {
-        Resources resources = getContext().getResources();
-        int resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            return resources.getDimensionPixelSize(resourceId);
+    private int getNavigationSize() {
+        if (!checked) {
+            checked = true;
+            Resources resources = getContext().getResources();
+            int resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android");
+            if (resourceId > 0) {
+                return resources.getDimensionPixelSize(resourceId);
+            }
+            return 0;
         }
-        return 0;
+        else return 0;
     }
 }
