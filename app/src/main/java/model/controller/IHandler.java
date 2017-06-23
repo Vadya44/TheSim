@@ -1,4 +1,4 @@
-package controller;
+package model.controller;
 
 /**
  * Created by Vadya on 23.06.17.

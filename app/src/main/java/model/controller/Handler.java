@@ -1,7 +1,6 @@
-package controller;
+package model.controller;
 
 import model.scenes.*;
-import java.util.*;
 
 /**
  * Created by Vadya on 23.06.17.

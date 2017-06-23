@@ -1,6 +1,4 @@
-package controller;
-
-import java.util.List;
+package model.controller;
 
 import model.scenes.*;
 

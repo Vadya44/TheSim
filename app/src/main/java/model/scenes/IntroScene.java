@@ -5,9 +5,13 @@ import android.content.res.Resources;
 
 /**
  * Created by Vadya on 23.06.17.
+ * Scene of introducing to Game
+ * Shows first 2 seconds
+ * then continue to main menu
  */
 
 public final class IntroScene extends Scene{
+
     private static Bitmap mbitmap;
     private static Timer mtimer = new Timer();
     public static void OnDraw(Canvas canvas)
