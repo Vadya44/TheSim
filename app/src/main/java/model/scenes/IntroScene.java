@@ -1,11 +1,7 @@
 package model.scenes;
 import android.app.Application;
 import android.graphics.*;
-import android.content.Context;
-import android.content.res.Resources;
-import java.util.*;
-import android.content.res.Resources;
-
+import android.os.CountDownTimer;
 import vadyaproduction.sim.GameView;
 
 /**
@@ -35,13 +31,21 @@ public final class IntroScene extends Scene{
     public void show()
     {
         view.activeScene = this;
+        new CountDownTimer(3000, 1000) {
+            public void onFinish() {
+                hide();
+            }
 
-        hide();
-
+            public void onTick(long millisUntilFinished)
+            {
+            }
+        }.start();
     }
     public void hide()
     {
+        mbitmap = null;
         view.activeScene = menuSc;
+        menuSc = null;
         view.invalidate();
     }
     /**
