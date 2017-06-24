@@ -5,5 +5,5 @@ package model.scenes;
  */
 
 public final class MainMenu extends Scene {
-    
+
 }
