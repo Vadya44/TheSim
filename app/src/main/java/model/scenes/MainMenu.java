@@ -18,6 +18,7 @@ import model.scenes.MainMenu;
 import model.scenes.Scene;
 import vadyaproduction.sim.GameView;
 import vadyaproduction.sim.R;
+import android.view.animation.*;
 
 /**
  * Created by Vadya on 24.06.17.
@@ -36,8 +37,10 @@ public final class MainMenu extends Scene {
     }
     @Override
     public void show() {
-
-
+        final Animation fadeOut = new AlphaAnimation(0, 1);
+        fadeOut.setInterpolator(new AccelerateInterpolator()); //and this
+        fadeOut.setDuration(1000);
+        view.startAnimation(fadeOut);
     }
 
     @Override

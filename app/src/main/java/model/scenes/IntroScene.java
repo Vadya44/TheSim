@@ -2,6 +2,8 @@ package model.scenes;
 import android.app.Application;
 import android.graphics.*;
 import android.os.CountDownTimer;
+import android.view.animation.*;
+
 import vadyaproduction.sim.GameView;
 
 /**
@@ -31,20 +33,26 @@ public final class IntroScene extends Scene{
     public void show()
     {
         view.activeScene = this;
-        new CountDownTimer(3000, 1000) {
+        final Animation fadeIn = new AlphaAnimation(1, 0);
+        fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
+        fadeIn.setDuration(1000);
+        new CountDownTimer(3000, 2000) {
             public void onFinish() {
+                view.clearAnimation();
                 hide();
             }
 
             public void onTick(long millisUntilFinished)
             {
+                if (millisUntilFinished  <= 1000)
+                    view.startAnimation(fadeIn);
             }
         }.start();
     }
     public void hide()
     {
-        mbitmap = null;
         view.activeScene = menuSc;
+        menuSc.show();
         menuSc = null;
         view.invalidate();
     }
