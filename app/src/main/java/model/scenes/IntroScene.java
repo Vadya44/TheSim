@@ -1,5 +1,4 @@
 package model.scenes;
-import android.app.Application;
 import android.graphics.*;
 import android.os.CountDownTimer;
 import android.view.animation.*;
@@ -9,7 +8,7 @@ import vadyaproduction.sim.GameView;
 /**
  * Created by Vadya on 23.06.17.
  * Scene of introducing to Game
- * Shows first 2 seconds
+ * Shows first 3 seconds
  * then continue to main menu
  */
 
@@ -34,7 +33,7 @@ public final class IntroScene extends Scene{
     {
         view.activeScene = this;
         final Animation fadeIn = new AlphaAnimation(1, 0);
-        fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
+        fadeIn.setInterpolator(new DecelerateInterpolator());
         fadeIn.setDuration(1000);
         new CountDownTimer(3000, 2000) {
             public void onFinish() {
