@@ -14,6 +14,11 @@ import model.scenes.IntroScene;
 import model.scenes.MainMenu;
 import model.scenes.Scene;
 
+/**
+ * TODO:
+ * GetsruteListener don't work
+ * Now no one idea how to do it
+ */
 public final class GameView extends View{
     private static final int InvalidPointerId = -1;
     private int mactivePointerId = InvalidPointerId;
@@ -22,7 +27,6 @@ public final class GameView extends View{
     private float mposX = 0;
     private float mposY = 0;
     private byte misMoved = 0;
-    private GestureHandler handler;
     public static float mainWidth = 720;
     public static float mainHidth = 1280;
     public static float centerX;
@@ -35,6 +39,10 @@ public final class GameView extends View{
     private IntroScene introScene;
     private GestureHandler gestureHandler;
 
+    public void setActiveScene4Handler()
+    {
+        gestureHandler = new GestureHandler(activeScene);
+    }
     public GameView(Context context) {
         super(context);
         init(null, 0);
@@ -67,7 +75,7 @@ public final class GameView extends View{
                 R.drawable.intro), (int) (factor * mainWidth), (int) (factor * mainHidth), false);
         MainMenu mMenu = new MainMenu(this);
         introScene = new IntroScene(bitmap, this, mMenu);
-        gestureHandler = new GestureHandler(activeScene);
+
     }
 
     @Override
@@ -80,7 +88,6 @@ public final class GameView extends View{
                 mlastTouchX = ev.getY();
                 mlastTouchY = ev.getY();
                 mactivePointerId = ev.getPointerId(0);
-                invalidate();
                 break;
             case MotionEvent.ACTION_MOVE:
                 misMoved = 1;

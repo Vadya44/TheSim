@@ -3,6 +3,9 @@ package model.scenes;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import java.util.*;
+import model.scenes.buttons.AboutButton;
+import model.scenes.buttons.IButton;
 import vadyaproduction.sim.GameView;
 import vadyaproduction.sim.R;
 
@@ -17,14 +20,20 @@ public final class MainMenu extends Scene {
     private GameView view;
     private Bitmap mbitmap;
     private Paint p;
-    private
+    private ArrayList<IButton> buttonList;
+    IButton clickedButton = null;
     public MainMenu(GameView view) {
         this.view = view;
+        this.view.setActiveScene4Handler();
         mbitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(view.res,
                 R.drawable.menu), (int) (view.factor * view.mainWidth),
                 (int) (view.factor * view.mainHidth), false);
         p = new Paint();
         p.setAlpha(200);
+        AboutButton aboutButton = new AboutButton((float)(view.mainHidth * 0.844),
+                (float)(view.mainWidth * 0.388),
+                (float)(view.mainHidth * 0.963), (float)(view.mainWidth * 0.611));
+        buttonList = new ArrayList<IButton>();
 
     }
     @Override
@@ -45,29 +54,19 @@ public final class MainMenu extends Scene {
 
     @Override
     public void onDraw(Canvas canvas) {
-
         canvas.drawBitmap(mbitmap, 0 ,0 , null);
+        if (clickedButton != null) clickedButton.onDrawClicl(canvas);
     }
 
     @Override
     public void justTap(float x, float y) {
-        isAboutButtonClicked(x ,y) ? onAboutButtonClicked();
-
+        if (!buttonList.isEmpty())
+            for(IButton btn : buttonList)
+                if (btn.isThisButtonTap(x,y)) clickedButton = btn;
     }
 
     @Override
     public void movedTouch(float x1, float y1, float x2, float y2) {
-
-    }
-    private boolean isAboutButtonClicked(float x, float y)
-    {
-        if (x > view.mainHidth * 0.844 && x < view.mainHidth * 0.963 &&
-                y < view.mainWidth * 0.611 && y > 0.388 * view.mainWidth)
-            return  true;
-        else  return false;
-    }
-    private void onAboutButtonClicked()
-    {
 
     }
 }

@@ -14,8 +14,8 @@ import vadyaproduction.sim.GameView;
 
 public final class IntroScene extends Scene{
 
-    private GameView view = null;
-    private MainMenu menuSc = null;
+    private GameView view;
+    private MainMenu menuSc;
     private static Bitmap mbitmap;
     public IntroScene(Bitmap bitmap, GameView view, MainMenu menuSc)
     {
@@ -52,8 +52,6 @@ public final class IntroScene extends Scene{
     {
         view.activeScene = menuSc;
         menuSc.show();
-        menuSc = null;
-        view.invalidate();
     }
     /**
     Touch event's are don't working in this scene

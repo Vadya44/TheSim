@@ -16,7 +16,7 @@ public final class GestureHandler extends Handler {
     public void movedTouch(float x1, float y1, float x2, float y2){
         mactiveScene.movedTouch(x1,y1,x2,y2);
     }
-    private Scene mactiveScene = null;
+    private Scene mactiveScene;
     public void setScene(Scene sc){
         mactiveScene = sc;
     }
