@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import model.controller.GestureHandler;
+import controller.GestureHandler;
 import model.scenes.IntroScene;
 import model.scenes.MainMenu;
 import model.scenes.Scene;

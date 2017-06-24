@@ -5,6 +5,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import vadyaproduction.sim.GameView;
 import vadyaproduction.sim.R;
+
+import android.graphics.*;
 import android.view.animation.*;
 
 /**
@@ -12,15 +14,18 @@ import android.view.animation.*;
  */
 
 public final class MainMenu extends Scene {
-
     private GameView view;
     private Bitmap mbitmap;
-    public MainMenu(GameView view)
-    {
+    private Paint p;
+    private
+    public MainMenu(GameView view) {
         this.view = view;
-        mbitmap= Bitmap.createScaledBitmap(BitmapFactory.decodeResource(view.res,
+        mbitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(view.res,
                 R.drawable.menu), (int) (view.factor * view.mainWidth),
                 (int) (view.factor * view.mainHidth), false);
+        p = new Paint();
+        p.setAlpha(200);
+
     }
     @Override
     public void show() {
@@ -46,11 +51,23 @@ public final class MainMenu extends Scene {
 
     @Override
     public void justTap(float x, float y) {
+        isAboutButtonClicked(x ,y) ? onAboutButtonClicked();
 
     }
 
     @Override
     public void movedTouch(float x1, float y1, float x2, float y2) {
+
+    }
+    private boolean isAboutButtonClicked(float x, float y)
+    {
+        if (x > view.mainHidth * 0.844 && x < view.mainHidth * 0.963 &&
+                y < view.mainWidth * 0.611 && y > 0.388 * view.mainWidth)
+            return  true;
+        else  return false;
+    }
+    private void onAboutButtonClicked()
+    {
 
     }
 }
