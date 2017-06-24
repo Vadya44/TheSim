@@ -3,19 +3,6 @@ package model.scenes;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.util.AttributeSet;
-import android.view.MotionEvent;
-import android.view.View;
-
-import model.controller.GestureHandler;
-import model.scenes.IntroScene;
-import model.scenes.MainMenu;
-import model.scenes.Scene;
 import vadyaproduction.sim.GameView;
 import vadyaproduction.sim.R;
 import android.view.animation.*;
@@ -45,7 +32,10 @@ public final class MainMenu extends Scene {
 
     @Override
     public void hide() {
-
+        final Animation fadeIn = new AlphaAnimation(1, 0);
+        fadeIn.setInterpolator(new DecelerateInterpolator());
+        fadeIn.setDuration(1000);
+        view.startAnimation(fadeIn);
     }
 
     @Override

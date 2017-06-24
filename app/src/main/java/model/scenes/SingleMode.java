@@ -5,16 +5,20 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 
+import vadyaproduction.sim.GameView;
+
 /**
  * Created by Vadya on 24.06.17.
  */
 
 public final class SingleMode extends Scene {
+    GameView view = null;
     @Override
     public void show() {
         final Animation fadeOut = new AlphaAnimation(0, 1);
         fadeOut.setInterpolator(new AccelerateInterpolator()); //and this
         fadeOut.setDuration(1000);
+        view.startAnimation(fadeOut);
     }
 
     @Override
