@@ -11,6 +11,7 @@ import android.view.View;
 
 import model.controller.GestureHandler;
 import model.scenes.IntroScene;
+import model.scenes.MainMenu;
 import model.scenes.Scene;
 
 public final class GameView extends View{
@@ -28,8 +29,8 @@ public final class GameView extends View{
     public static float centerY;
     public static float factor = 1;
     private static boolean checked = false;
-    private Scene activeScene;
-
+    public Scene activeScene;
+    public Resources res = getResources();
     // Classes
     private IntroScene introScene;
     private GestureHandler gestureHandler;
@@ -64,8 +65,8 @@ public final class GameView extends View{
         factor = Math.max((float) width / mainWidth, (float) heigth / mainHidth);
         Bitmap bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
                 R.drawable.intro), (int) (factor * mainWidth), (int) (factor * mainHidth), false);
-        introScene = new IntroScene(bitmap);
-        activeScene = introScene;
+        MainMenu mMenu = new MainMenu(this);
+        introScene = new IntroScene(bitmap, this, mMenu);
         gestureHandler = new GestureHandler(activeScene);
     }
 
@@ -79,6 +80,7 @@ public final class GameView extends View{
                 mlastTouchX = ev.getY();
                 mlastTouchY = ev.getY();
                 mactivePointerId = ev.getPointerId(0);
+                invalidate();
                 break;
             case MotionEvent.ACTION_MOVE:
                 misMoved = 1;

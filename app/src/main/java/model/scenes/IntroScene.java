@@ -6,6 +6,8 @@ import android.content.res.Resources;
 import java.util.*;
 import android.content.res.Resources;
 
+import vadyaproduction.sim.GameView;
+
 /**
  * Created by Vadya on 23.06.17.
  * Scene of introducing to Game
@@ -15,29 +17,32 @@ import android.content.res.Resources;
 
 public final class IntroScene extends Scene{
 
+    private GameView view = null;
+    private MainMenu menuSc = null;
     private static Bitmap mbitmap;
-    public IntroScene(Bitmap bitmap)
+    public IntroScene(Bitmap bitmap, GameView view, MainMenu menuSc)
     {
+        this.view = view;
+        this.menuSc = menuSc;
         mbitmap = bitmap;
-        //show();
+        show();
+
     }
     public void onDraw(Canvas canvas)
     {
-        canvas.drawColor(Color.WHITE);
         canvas.drawBitmap(mbitmap, 0 ,0 , null);
     }
     public void show()
     {
-        /*
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {}
+        view.activeScene = this;
+
         hide();
-        */
+
     }
     public void hide()
     {
-
+        view.activeScene = menuSc;
+        view.invalidate();
     }
     /**
     Touch event's are don't working in this scene

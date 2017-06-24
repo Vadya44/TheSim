@@ -1,6 +1,23 @@
 package model.scenes;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.View;
+
+import model.controller.GestureHandler;
+import model.scenes.IntroScene;
+import model.scenes.MainMenu;
+import model.scenes.Scene;
+import vadyaproduction.sim.GameView;
+import vadyaproduction.sim.R;
 
 /**
  * Created by Vadya on 24.06.17.
@@ -8,8 +25,18 @@ import android.graphics.Canvas;
 
 public final class MainMenu extends Scene {
 
+    private GameView view;
+    private Bitmap mbitmap;
+    public MainMenu(GameView view)
+    {
+        this.view = view;
+        mbitmap= Bitmap.createScaledBitmap(BitmapFactory.decodeResource(view.res,
+                R.drawable.menu), (int) (view.factor * view.mainWidth),
+                (int) (view.factor * view.mainHidth), false);
+    }
     @Override
     public void show() {
+
 
     }
 
@@ -21,6 +48,7 @@ public final class MainMenu extends Scene {
     @Override
     public void onDraw(Canvas canvas) {
 
+        canvas.drawBitmap(mbitmap, 0 ,0 , null);
     }
 
     @Override
