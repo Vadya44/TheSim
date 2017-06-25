@@ -14,16 +14,24 @@ import model.DrawableElement;
 
 public class Button extends DrawableElement implements IButton {
     float x1, y1 ,x2, y2;
-    Paint p;
+    Paint realPaint;
+    Paint clickedPaint;
+    private boolean wasClicked = false;
+    private boolean isReal = false;
     private float factor;
-    public Button(float x1, float y1, float x2, float y2, float factor)
+    public Button(float x1, float y1, float x2, float y2, float factor, boolean isReal)
     {
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
         this.factor = factor;
-        p = new Paint(Paint.ANTI_ALIAS_FLAG);
+        this.isReal = isReal;
+        initPaints();
+    }
+    private void initPaints()
+    {
+        clickedPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         float[] cmData = new float[]{
                 1, 0, 0, 0, 0,
                 0, 1, 0, 0, 0,
@@ -31,12 +39,13 @@ public class Button extends DrawableElement implements IButton {
                 0, 0, 0, 0.5f, 0};
         ColorMatrix cm = new ColorMatrix(cmData);
         ColorFilter filter = new ColorMatrixColorFilter(cm);
-        p.setColorFilter(filter);
+        clickedPaint.setColorFilter(filter);
+        // TODO: Create real paint style
+        realPaint = new Paint();
 
     }
     public Button()
     {
-
     }
     public boolean isThisButtonTap(float x, float y) {
         if (x > x1 && x < x2 &&
@@ -56,10 +65,15 @@ public class Button extends DrawableElement implements IButton {
 
     @Override
     public void onDrawClick(Canvas canvas) {
-        canvas.drawCircle(x1 * factor/2, y1 * factor/2, 100, p);
+        canvas.drawCircle(x1 * factor/2, y1 * factor/2, 100, clickedPaint);
     }
-
+    public void onDrawReal(Canvas canvas)
+    {
+        // TODO: Create real paint drawing fuction
+    }
     @Override
     public void onDraw(Canvas canvas) {
+        if (isReal) onDrawReal(canvas);
+        if (wasClicked) onDrawClick(canvas);
     }
 }
