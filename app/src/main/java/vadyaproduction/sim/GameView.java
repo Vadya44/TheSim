@@ -16,8 +16,9 @@ import model.scenes.Scene;
 
 /**
  * TODO:
- * GetsruteListener don't work
- * Now no one idea how to do it
+ * Need rewrite Scene
+ * Modificate Button
+ * and etc.
  */
 public final class GameView extends View{
     private static final int InvalidPointerId = -1;
