@@ -6,11 +6,13 @@ import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
 
+import model.DrawableElement;
+
 /**
  * Created by Vadya on 25.06.17.
  */
 
-public class Button implements IButton {
+public class Button extends DrawableElement implements IButton {
     float x1, y1 ,x2, y2;
     Paint p;
     private float factor;
@@ -51,8 +53,13 @@ public class Button implements IButton {
             return  true;
         else  return false;
     }
-    public void onDrawClicl(Canvas canvas)
-    {
+
+    @Override
+    public void onDrawClick(Canvas canvas) {
         canvas.drawCircle(x1 * factor/2, y1 * factor/2, 100, p);
+    }
+
+    @Override
+    public void onDraw(Canvas canvas) {
     }
 }
