@@ -1,8 +1,9 @@
-package model.scenes;
+package view;
 import android.graphics.*;
 import android.os.CountDownTimer;
 import android.view.animation.*;
 
+import model.scenes.Scene;
 import vadyaproduction.sim.GameView;
 
 /**
@@ -12,7 +13,7 @@ import vadyaproduction.sim.GameView;
  * then continue to main menu
  */
 
-public final class IntroScene extends Scene{
+public final class IntroScene extends Scene {
 
     private static IntroScene Instance;
     public IntroScene getInstance(){

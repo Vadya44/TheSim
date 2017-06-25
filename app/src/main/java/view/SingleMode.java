@@ -1,10 +1,11 @@
-package model.scenes;
+package view;
 
 import android.graphics.Canvas;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 
+import model.scenes.Scene;
 import vadyaproduction.sim.GameView;
 
 /**

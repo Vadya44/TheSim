@@ -1,13 +1,10 @@
-package model.scenes.buttons;
+package model.buttons;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
 
 /**
  * Created by Vadya on 25.06.17.

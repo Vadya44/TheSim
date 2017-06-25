@@ -1,4 +1,4 @@
-package model.scenes.buttons;
+package model.buttons;
 
 import android.graphics.Canvas;
 

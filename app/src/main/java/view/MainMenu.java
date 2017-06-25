@@ -1,14 +1,15 @@
-package model.scenes;
+package view;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import java.util.*;
-import model.scenes.buttons.Button;
+
+import model.scenes.Scene;
+import model.buttons.Button;
 import vadyaproduction.sim.GameView;
 import vadyaproduction.sim.R;
 
-import android.graphics.*;
 import android.view.animation.*;
 
 /**
