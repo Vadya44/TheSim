@@ -13,10 +13,10 @@ import model.DrawableElement;
  */
 
 public class Button extends DrawableElement implements IButton {
-    float x1, y1 ,x2, y2;
-    Paint realPaint;
-    Paint clickedPaint;
-    private boolean wasClicked = false;
+    private float x1, y1 ,x2, y2;
+    private Paint realPaint;
+    private Paint clickedPaint;
+    private boolean wasClicked;
     private boolean isReal = false;
     private float factor;
     public Button(float x1, float y1, float x2, float y2, float factor, boolean isReal)
@@ -42,6 +42,7 @@ public class Button extends DrawableElement implements IButton {
         clickedPaint.setColorFilter(filter);
         // TODO: Create real paint style
         realPaint = new Paint();
+        wasClicked = false;
 
     }
     public Button()
@@ -65,7 +66,7 @@ public class Button extends DrawableElement implements IButton {
 
     @Override
     public void onDrawClick(Canvas canvas) {
-        canvas.drawCircle(x1 * factor/2, y1 * factor/2, 100, clickedPaint);
+        canvas.drawRoundRect(x1 * factor, y1 * factor, x2 * factor, y2 * factor, 20, 20, clickedPaint);
     }
     public void onDrawReal(Canvas canvas)
     {

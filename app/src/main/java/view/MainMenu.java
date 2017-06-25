@@ -27,9 +27,8 @@ public final class MainMenu extends Scene {
         mbitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(view.res,
                 R.drawable.menu), (int) (view.factor * view.mainWidth),
                 (int) (view.factor * view.mainHidth), false);
-        aboutButton = new Button((float)(view.mainHidth * 0.844),
-                (float)(view.mainWidth * 0.388),
-                (float)(view.mainHidth * 0.963), (float)(view.mainWidth * 0.611), view.factor, false);
+        aboutButton = new Button((float)(view.mainWidth * 0.388), (float)(view.mainHidth * 0.844),
+                (float)(view.mainWidth * 0.611), (float)(view.mainHidth * 0.963), view.factor, false);
         buttonList = new ArrayList<Button>();
     }
 

@@ -15,22 +15,21 @@ import vadyaproduction.sim.GameView;
 public class Scene implements IScene {
     protected GameView view;
     public void show() {
-    }
-    public void hide(){
-        final Animation fadeIn = new AlphaAnimation(1, 0);
-        fadeIn.setInterpolator(new DecelerateInterpolator());
-        fadeIn.setDuration(600);
-        view.startAnimation(fadeIn);
-
         view.postDelayed(new Runnable() {
             @Override
             public void run() {
                 final Animation fadeOut = new AlphaAnimation(0, 1);
                 fadeOut.setInterpolator(new AccelerateInterpolator()); //and this
-                fadeOut.setDuration(600);
+                fadeOut.setDuration(500);
                 view.startAnimation(fadeOut);
             }
-        }, 600);
+        }, 500);
+    }
+    public void hide(){
+        final Animation fadeIn = new AlphaAnimation(1, 0);
+        fadeIn.setInterpolator(new DecelerateInterpolator());
+        fadeIn.setDuration(500);
+        view.startAnimation(fadeIn);
     }
     public void onDraw(Canvas canvas){
 
