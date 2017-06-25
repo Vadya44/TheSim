@@ -37,12 +37,12 @@ public final class GameView extends View{
     public Resources res = getResources();
     // Classes
     private IntroScene introScene;
-    private GestureHandler gestureHandler;
+    //private GestureHandler gestureHandler;
 
-    public void setActiveScene4Handler()
-    {
-        gestureHandler = new GestureHandler(activeScene);
-    }
+    //public void setActiveScene4Handler()
+    //{
+    //    gestureHandler = new GestureHandler(activeScene);
+    //}
     public GameView(Context context) {
         super(context);
         init(null, 0);
@@ -98,11 +98,11 @@ public final class GameView extends View{
                 break;
             case MotionEvent.ACTION_UP:
                 if (misMoved == 0) {
-                    gestureHandler.justTap(mlastTouchX / factor, mlastTouchY / factor);
+                    //gestureHandler.justTap(mlastTouchX / factor, mlastTouchY / factor);
                     break;
                 } else {
-                    gestureHandler.movedTouch(mlastTouchX / factor, mlastTouchY / factor,
-                            ev.getX(pointerIndex) / factor, ev.getY(pointerIndex) / factor);
+                    //gestureHandler.movedTouch(mlastTouchX / factor, mlastTouchY / factor,
+                    //        ev.getX(pointerIndex) / factor, ev.getY(pointerIndex) / factor);
                     misMoved = 0;
                     break;
 
@@ -113,7 +113,10 @@ public final class GameView extends View{
         }
         return true;
     }
+    public void initScenes()
+    {
 
+    }
     private int getNavigationSize() {
         if (!checked) {
             checked = true;

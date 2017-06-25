@@ -14,6 +14,10 @@ import vadyaproduction.sim.GameView;
 
 public final class IntroScene extends Scene{
 
+    private static IntroScene Instance;
+    public IntroScene getInstance(){
+        return Instance;
+    }
     private GameView view;
     private MainMenu menuSc;
     private static Bitmap mbitmap;
