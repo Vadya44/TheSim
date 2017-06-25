@@ -6,6 +6,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 
+import java.util.ArrayList;
+
+import model.DrawableElement;
 import vadyaproduction.sim.GameView;
 
 /**
@@ -13,6 +16,7 @@ import vadyaproduction.sim.GameView;
  */
 
 public class Scene implements IScene {
+    ArrayList<DrawableElement> drawableElements = new ArrayList<DrawableElement>();
     protected GameView view;
     public void show() {
         view.postDelayed(new Runnable() {
@@ -32,6 +36,11 @@ public class Scene implements IScene {
         view.startAnimation(fadeIn);
     }
     public void onDraw(Canvas canvas){
+        if (!drawableElements.isEmpty()) {
+            for (DrawableElement ele : drawableElements
+                    )
+                ele.onDraw(canvas);
+        }
 
     }
     public void justTap(float x, float y){
