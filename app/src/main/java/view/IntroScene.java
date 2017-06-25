@@ -14,11 +14,6 @@ import vadyaproduction.sim.GameView;
  */
 
 public final class IntroScene extends Scene {
-
-    private static IntroScene Instance;
-    public IntroScene getInstance(){
-        return Instance;
-    }
     private GameView view;
     private MainMenu menuSc;
     private static Bitmap mbitmap;
@@ -30,33 +25,45 @@ public final class IntroScene extends Scene {
         show();
 
     }
+    @Override
     public void onDraw(Canvas canvas)
     {
         canvas.drawBitmap(mbitmap, 0 ,0 , null);
     }
+    @Override
     public void show()
     {
         view.activeScene = this;
         final Animation fadeIn = new AlphaAnimation(1, 0);
         fadeIn.setInterpolator(new DecelerateInterpolator());
         fadeIn.setDuration(1000);
-        new CountDownTimer(3000, 2000) {
+        new CountDownTimer(3000, 1000) {
             public void onFinish() {
-                view.clearAnimation();
                 hide();
             }
 
             public void onTick(long millisUntilFinished)
             {
-                if (millisUntilFinished  <= 1000)
+                if (millisUntilFinished  <= 1000) {
                     view.startAnimation(fadeIn);
+                    view.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            final Animation fadeOut = new AlphaAnimation(0, 1);
+                            fadeOut.setInterpolator(new AccelerateInterpolator()); //and this
+                            fadeOut.setDuration(1000);
+                            view.startAnimation(fadeOut);
+                        }
+                    }, 1000);
+                }
             }
         }.start();
     }
+    @Override
     public void hide()
     {
         view.activeScene = menuSc;
-        menuSc.show();
+        view.invalidate();
     }
     /**
     Touch event's are don't working in this scene

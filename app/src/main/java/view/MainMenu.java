@@ -17,7 +17,6 @@ import android.view.animation.*;
  */
 
 public final class MainMenu extends Scene {
-    private GameView view;
     private Bitmap mbitmap;
     private Button aboutButton;
     private ArrayList<Button> buttonList;
@@ -30,29 +29,14 @@ public final class MainMenu extends Scene {
                 (int) (view.factor * view.mainHidth), false);
         aboutButton = new Button((float)(view.mainHidth * 0.844),
                 (float)(view.mainWidth * 0.388),
-                (float)(view.mainHidth * 0.963), (float)(view.mainWidth * 0.611), view.factor);
+                (float)(view.mainHidth * 0.963), (float)(view.mainWidth * 0.611), view.factor, false);
         buttonList = new ArrayList<Button>();
-    }
-    @Override
-    public void show() {
-        final Animation fadeOut = new AlphaAnimation(0, 1);
-        fadeOut.setInterpolator(new AccelerateInterpolator()); //and this
-        fadeOut.setDuration(1000);
-        view.startAnimation(fadeOut);
-    }
-
-    @Override
-    public void hide() {
-        final Animation fadeIn = new AlphaAnimation(1, 0);
-        fadeIn.setInterpolator(new DecelerateInterpolator());
-        fadeIn.setDuration(1000);
-        view.startAnimation(fadeIn);
     }
 
     @Override
     public void onDraw(Canvas canvas) {
         canvas.drawBitmap(mbitmap, 0 ,0 , null);
-        aboutButton.onDrawClicl(canvas);
+        aboutButton.onDrawClick(canvas);
         //if (clickedButton != null) clickedButton.onDrawClicl(canvas);
     }
 

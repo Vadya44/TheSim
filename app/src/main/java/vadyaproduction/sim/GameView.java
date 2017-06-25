@@ -80,6 +80,8 @@ public final class GameView extends View{
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
+        activeScene.hide();
+        activeScene.show();
         MotionEvent action = ev;
         int pointerIndex = 0;
         if (ev.getPointerCount() > 1) return false;
