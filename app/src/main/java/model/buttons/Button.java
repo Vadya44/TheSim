@@ -53,21 +53,13 @@ public class Button extends DrawableElement implements IButton {
     {
     }
     public boolean isThisButtonTap(float x, float y) {
-        if (x > x1 && x < x2 &&
-                y < y2 && y > y1)
-        {
-            return  true;
-        }
-        else  return false;
+        return  (x > x1 && x < x2 &&
+                y < y2 && y > y1);
     }
     public boolean isThisButtonMove(float x1, float y1, float x2, float y2) {
-        if (x1 > this.x1 && x1 < this.x2 && x2 > this.x1 && x2 < this.x2 &&
-                y1 > this.y1 && y1 < this.y2 && y2 > this.y1 && y2 < this.y2)
-            return  true;
-        else  return false;
+        return  (x1 > this.x1 && x1 < this.x2 && x2 > this.x1 && x2 < this.x2 &&
+                y1 > this.y1 && y1 < this.y2 && y2 > this.y1 && y2 < this.y2);
     }
-
-    @Override
     public void onDrawClick(Canvas canvas) {
         canvas.drawRoundRect(x1 * factor, y1 * factor, x2 * factor, y2 * factor, 20, 20, clickedPaint);
     }

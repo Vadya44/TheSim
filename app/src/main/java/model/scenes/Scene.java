@@ -9,6 +9,7 @@ import android.view.animation.DecelerateInterpolator;
 import java.util.ArrayList;
 
 import model.DrawableElement;
+import model.buttons.Button;
 import vadyaproduction.sim.GameView;
 
 /**
@@ -18,6 +19,7 @@ import vadyaproduction.sim.GameView;
 public class Scene implements IScene {
     protected ArrayList<DrawableElement> drawableElements = new ArrayList<DrawableElement>();
     protected GameView view;
+
     public void show() {
         view.postDelayed(new Runnable() {
             @Override
@@ -29,24 +31,48 @@ public class Scene implements IScene {
             }
         }, 500);
     }
-    public void hide(){
+
+    public void hide() {
         final Animation fadeIn = new AlphaAnimation(1, 0);
         fadeIn.setInterpolator(new DecelerateInterpolator());
         fadeIn.setDuration(500);
         view.startAnimation(fadeIn);
     }
-    public void onDraw(Canvas canvas){
+
+    public void onDraw(Canvas canvas) {
         if (!drawableElements.isEmpty()) {
-            for (DrawableElement ele : drawableElements
-                    )
+            for (DrawableElement ele : drawableElements)
                 ele.onDraw(canvas);
         }
 
     }
-    public void justTap(float x, float y){
+    // TODO: Clicks don't works
+    public void actionDOWN(float x, float y)
+    {
+        for (DrawableElement btn : drawableElements)
+            if (btn instanceof Button) {
+                if (((Button) btn).isThisButtonTap(x, y))
+                    ((Button) btn).setWasClicked(true);
+            }
+    }
+    public void actionCancel()
+    {
+        for (DrawableElement btn : drawableElements)
+            if (btn instanceof Button)
+                ((Button)btn).setWasClicked(false);
+    }
+
+    public void justTap(float x, float y) {
+        for (DrawableElement btn : drawableElements)
+            if (btn instanceof Button)
+                ((Button) btn).isThisButtonTap(x, y);
+
 
     }
-    public void movedTouch(float x1, float y1, float x2, float y2){
 
+    public void movedTouch(float x1, float y1, float x2, float y2) {
+        for (DrawableElement btn : drawableElements)
+            if (btn instanceof Button)
+                ((Button) btn).isThisButtonMove(x1, y1, x2, y2);
     }
 }

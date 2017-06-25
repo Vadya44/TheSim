@@ -13,12 +13,6 @@ import view.IntroScene;
 import view.MenuScene;
 import model.scenes.Scene;
 
-/**
- * TODO:
- * Need rewrite Scene
- * Modificate Button
- * and etc.
- */
 public final class GameView extends View{
     private static final int InvalidPointerId = -1;
     private int mactivePointerId = InvalidPointerId;
@@ -80,8 +74,6 @@ public final class GameView extends View{
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        activeScene.hide();
-        activeScene.show();
         MotionEvent action = ev;
         int pointerIndex = 0;
         if (ev.getPointerCount() > 1) return false;
@@ -89,6 +81,7 @@ public final class GameView extends View{
             case MotionEvent.ACTION_DOWN:
                 mlastTouchX = ev.getY();
                 mlastTouchY = ev.getY();
+                activeScene.actionDOWN(mlastTouchX / factor,mlastTouchY / factor);
                 mactivePointerId = ev.getPointerId(0);
                 break;
             case MotionEvent.ACTION_MOVE:
@@ -100,17 +93,19 @@ public final class GameView extends View{
                 break;
             case MotionEvent.ACTION_UP:
                 if (misMoved == 0) {
-                    //gestureHandler.justTap(mlastTouchX / factor, mlastTouchY / factor);
+                    activeScene.justTap(mlastTouchX / factor, mlastTouchY / factor);
                     break;
                 } else {
-                    //gestureHandler.movedTouch(mlastTouchX / factor, mlastTouchY / factor,
-                    //        ev.getX(pointerIndex) / factor, ev.getY(pointerIndex) / factor);
+                    activeScene.movedTouch(mlastTouchX / factor, mlastTouchY / factor,
+                            ev.getX(pointerIndex) / factor, ev.getY(pointerIndex) / factor);
+                    activeScene.actionCancel();
                     misMoved = 0;
                     break;
 
                 }
             case MotionEvent.ACTION_CANCEL:
                 mactivePointerId = InvalidPointerId;
+                activeScene.actionCancel();
                 break;
         }
         return true;
