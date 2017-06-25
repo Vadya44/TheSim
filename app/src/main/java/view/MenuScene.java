@@ -9,6 +9,7 @@ import model.scenes.Scene;
 import model.buttons.Button;
 import vadyaproduction.sim.GameView;
 import vadyaproduction.sim.R;
+import model.Bitmaps;
 
 import android.view.animation.*;
 
@@ -19,7 +20,6 @@ import android.view.animation.*;
 public final class MenuScene extends Scene {
     private Bitmap mbitmap;
     private Button aboutButton;
-    private ArrayList<Button> buttonList;
     Button clickedButton = null;
     public MenuScene(GameView view) {
         this.view = view;
@@ -29,14 +29,14 @@ public final class MenuScene extends Scene {
                 (int) (view.factor * view.mainHidth), false);
         aboutButton = new Button((float)(view.mainWidth * 0.388), (float)(view.mainHidth * 0.844),
                 (float)(view.mainWidth * 0.611), (float)(view.mainHidth * 0.963), view.factor, false);
-        buttonList = new ArrayList<Button>();
+        aboutButton.setWasClicked(true);
+        initFields();
     }
-
-    @Override
-    public void onDraw(Canvas canvas) {
-        canvas.drawBitmap(mbitmap, 0 ,0 , null);
-        aboutButton.onDrawClick(canvas);
-        //if (clickedButton != null) clickedButton.onDrawClicl(canvas);
+    public void initFields()
+    {
+        Bitmaps bitmaps = new Bitmaps(mbitmap);
+        drawableElements.add(bitmaps);
+        drawableElements.add(aboutButton);
     }
 
     @Override

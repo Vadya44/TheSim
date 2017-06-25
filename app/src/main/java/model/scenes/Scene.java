@@ -16,7 +16,7 @@ import vadyaproduction.sim.GameView;
  */
 
 public class Scene implements IScene {
-    ArrayList<DrawableElement> drawableElements = new ArrayList<DrawableElement>();
+    protected ArrayList<DrawableElement> drawableElements = new ArrayList<DrawableElement>();
     protected GameView view;
     public void show() {
         view.postDelayed(new Runnable() {
