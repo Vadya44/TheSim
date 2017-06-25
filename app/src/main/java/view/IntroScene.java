@@ -15,9 +15,9 @@ import vadyaproduction.sim.GameView;
 
 public final class IntroScene extends Scene {
     private GameView view;
-    private MainMenu menuSc;
+    private MenuScene menuSc;
     private static Bitmap mbitmap;
-    public IntroScene(Bitmap bitmap, GameView view, MainMenu menuSc)
+    public IntroScene(Bitmap bitmap, GameView view, MenuScene menuSc)
     {
         this.view = view;
         this.menuSc = menuSc;

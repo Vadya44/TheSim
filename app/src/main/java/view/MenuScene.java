@@ -16,12 +16,12 @@ import android.view.animation.*;
  * Created by Vadya on 24.06.17.
  */
 
-public final class MainMenu extends Scene {
+public final class MenuScene extends Scene {
     private Bitmap mbitmap;
     private Button aboutButton;
     private ArrayList<Button> buttonList;
     Button clickedButton = null;
-    public MainMenu(GameView view) {
+    public MenuScene(GameView view) {
         this.view = view;
         //this.view.setActiveScene4Handler();
         mbitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(view.res,

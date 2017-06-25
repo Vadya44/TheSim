@@ -10,7 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import view.IntroScene;
-import view.MainMenu;
+import view.MenuScene;
 import model.scenes.Scene;
 
 /**
@@ -73,7 +73,7 @@ public final class GameView extends View{
         factor = Math.max((float) width / mainWidth, (float) heigth / mainHidth);
         Bitmap bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
                 R.drawable.intro), (int) (factor * mainWidth), (int) (factor * mainHidth), false);
-        MainMenu mMenu = new MainMenu(this);
+        MenuScene mMenu = new MenuScene(this);
         introScene = new IntroScene(bitmap, this, mMenu);
 
     }
