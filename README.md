@@ -1,3 +1,3 @@
-The Sim is the game for android devices. Developed in Android Studio Java.
+Sim, the game for android, developing with using Android Studio.
 _________________________________________________________________
 
