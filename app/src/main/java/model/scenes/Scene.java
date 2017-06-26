@@ -46,7 +46,7 @@ public class Scene implements IScene {
         }
 
     }
-    // TODO: Clicks don't works
+    // TODO: Clicks don't works 
     public void actionDOWN(float x, float y)
     {
         for (DrawableElement btn : drawableElements)
