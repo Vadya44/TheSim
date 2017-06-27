@@ -36,9 +36,10 @@ public final class MenuScene extends Scene {
                 (float)(view.mainWidth * 0.611), (float)(view.mainHidth * 0.963), view.factor, false);
         singleButton = new Button(0,0,0,0,0,false);
         multiplayerButton = new Button(0,0,0,0,0,false);
-        leaderBoardButton = new Button(0,0,0,0,0,false);
         accountButton = new Button((float)(view.mainWidth * 0.056), (float)(view.mainHidth * 0.03),
                 (float)(view.mainWidth * 0.35), (float)(view.mainHidth * 0.147), view.factor, false);
+        leaderBoardButton = new Button((float)(view.mainWidth * 0.615), (float)(view.mainHidth * 0.034),
+                (float)(view.mainWidth * 0.914), (float)(view.mainHidth * 0.151), view.factor, false);
 
         Bitmaps bitmaps = new Bitmaps(mbitmap);
         drawableElements.add(bitmaps);
