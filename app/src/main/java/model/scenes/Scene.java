@@ -3,7 +3,7 @@ import android.graphics.Canvas;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+import android.graphics.Bitmap;
 import android.view.animation.DecelerateInterpolator;
 
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class Scene implements IScene {
         }
 
     }
-    // TODO: Clicks don't works 
+    // TODO: Clicks don't works
     public void actionDOWN(float x, float y)
     {
         for (DrawableElement btn : drawableElements)
@@ -54,18 +54,21 @@ public class Scene implements IScene {
                 if (((Button) btn).isThisButtonTap(x, y))
                     ((Button) btn).setWasClicked(true);
             }
+            view.invalidate();
     }
     public void actionCancel()
     {
         for (DrawableElement btn : drawableElements)
             if (btn instanceof Button)
                 ((Button)btn).setWasClicked(false);
+        view.invalidate();
     }
 
     public void justTap(float x, float y) {
         for (DrawableElement btn : drawableElements)
             if (btn instanceof Button)
                 ((Button) btn).isThisButtonTap(x, y);
+        view.invalidate();
 
 
     }
@@ -74,5 +77,6 @@ public class Scene implements IScene {
         for (DrawableElement btn : drawableElements)
             if (btn instanceof Button)
                 ((Button) btn).isThisButtonMove(x1, y1, x2, y2);
+        view.invalidate();
     }
 }

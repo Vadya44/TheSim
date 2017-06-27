@@ -1,4 +1,4 @@
-#Sim, the game for android, developing with using Android Studio.
+Sim, the game for android, developing with using Android Studio.
 
 
 // Some screenshots of Intro and Menu Scenes:

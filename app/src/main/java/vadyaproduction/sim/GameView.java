@@ -79,7 +79,7 @@ public final class GameView extends View{
         if (ev.getPointerCount() > 1) return false;
         switch (ev.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
-                mlastTouchX = ev.getY();
+                mlastTouchX = ev.getX();
                 mlastTouchY = ev.getY();
                 activeScene.actionDOWN(mlastTouchX / factor,mlastTouchY / factor);
                 mactivePointerId = ev.getPointerId(0);

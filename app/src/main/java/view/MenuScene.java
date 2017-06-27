@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import java.util.*;
 
+import model.DrawableElement;
 import model.scenes.Scene;
 import model.buttons.Button;
 import vadyaproduction.sim.GameView;
@@ -22,7 +23,6 @@ public final class MenuScene extends Scene {
     private Button aboutButton;
     public MenuScene(GameView view) {
         this.view = view;
-        //this.view.setActiveScene4Handler();
         initFields();
     }
     public void initFields()
