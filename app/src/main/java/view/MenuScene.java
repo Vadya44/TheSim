@@ -42,6 +42,9 @@ public final class MenuScene extends Scene {
         singleButton = new Button((float)(view.mainWidth * 0.240), (float)(view.mainHidth * 0.207),
                 (float)(view.mainWidth * 0.753), (float)(view.mainHidth * 0.474), view.factor, false);
         singleButton.setBig(true);
+        multiplayerButton = new Button((float)(view.mainWidth * 0.240), (float)(view.mainHidth * 0.520),
+                (float)(view.mainWidth * 0.753), (float)(view.mainHidth * 0.788), view.factor, false);
+        multiplayerButton.setBig(true);
 
         Bitmaps bitmaps = new Bitmaps(mbitmap);
         drawableElements.add(bitmaps);
