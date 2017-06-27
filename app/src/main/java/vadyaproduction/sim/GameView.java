@@ -94,6 +94,7 @@ public final class GameView extends View{
             case MotionEvent.ACTION_UP:
                 if (misMoved == 0) {
                     activeScene.justTap(mlastTouchX / factor, mlastTouchY / factor);
+                    activeScene.actionCancel();
                     break;
                 } else {
                     activeScene.movedTouch(mlastTouchX / factor, mlastTouchY / factor,
