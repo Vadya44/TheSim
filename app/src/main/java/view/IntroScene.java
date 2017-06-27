@@ -3,6 +3,8 @@ import android.graphics.*;
 import android.os.CountDownTimer;
 import android.view.animation.*;
 
+import model.DrawableElement;
+import model.buttons.Button;
 import model.scenes.Scene;
 import vadyaproduction.sim.GameView;
 
@@ -68,9 +70,21 @@ public final class IntroScene extends Scene {
     /**
     Touch event's are don't working in this scene
      */
+    @Override
+    public void actionDOWN(float x, float y)
+    {
+        return;
+    }
+    @Override
+    public void actionCancel()
+    {
+        return;
+    }
+    @Override
     public void movedTouch(float x1, float y1, float x2, float y2) {
         return;
     }
+    @Override
     public void justTap(float x, float y){
         return;
     }

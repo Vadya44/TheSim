@@ -15,10 +15,15 @@ import model.DrawableElement;
 public class Button extends DrawableElement implements IButton {
     private float x1, y1 ,x2, y2;
     private Paint realPaint;
+    private boolean isBig = false;
     private Paint clickedPaint;
     private boolean wasClicked;
     private boolean isReal = false;
     private float factor;
+    public void setBig(boolean isbig)
+    {
+        isBig = isbig;
+    }
     public Button(float x1, float y1, float x2, float y2, float factor, boolean isReal)
     {
         this.x1 = x1;
@@ -61,7 +66,8 @@ public class Button extends DrawableElement implements IButton {
                 y1 > this.y1 && y1 < this.y2 && y2 > this.y1 && y2 < this.y2);
     }
     public void onDrawClick(Canvas canvas) {
-        canvas.drawRoundRect(x1 * factor, y1 * factor, x2 * factor, y2 * factor, 20, 20, clickedPaint);
+        if (isBig) canvas.drawRoundRect(x1 * factor, y1 * factor, x2 * factor, y2 * factor, 50, 50, clickedPaint);
+        else canvas.drawRoundRect(x1 * factor, y1 * factor, x2 * factor, y2 * factor, 20, 20, clickedPaint);
     }
     public void onDrawReal(Canvas canvas)
     {
