@@ -19,6 +19,7 @@ import java.sql.BatchUpdateException;
  */
 
 public final class MenuScene extends Scene {
+    public static MenuScene instance;
     private Bitmap mbitmap;
     private Button aboutButton;
     private Button singleButton;

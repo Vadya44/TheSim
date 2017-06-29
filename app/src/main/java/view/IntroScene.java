@@ -17,12 +17,10 @@ import vadyaproduction.sim.GameView;
 
 public final class IntroScene extends Scene {
     private GameView view;
-    private MenuScene menuSc;
     private static Bitmap mbitmap;
-    public IntroScene(Bitmap bitmap, GameView view, MenuScene menuSc)
+    public IntroScene(Bitmap bitmap, GameView view)
     {
         this.view = view;
-        this.menuSc = menuSc;
         mbitmap = bitmap;
         show();
 
@@ -63,7 +61,7 @@ public final class IntroScene extends Scene {
     }
     public void hide()
     {
-        view.setActiveScene(menuSc);
+        view.setActiveScene(MenuScene.instance);
         view.invalidate();
     }
     /**

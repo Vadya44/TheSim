@@ -69,7 +69,7 @@ public final class GameView extends View{
         Bitmap bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
                 R.drawable.intro), (int) (factor * mainWidth), (int) (factor * mainHidth), false);
         mMenu = new MenuScene(this);
-        introScene = new IntroScene(bitmap, this, mMenu);
+        introScene = new IntroScene(bitmap, this);
         initScenes();
     }
 
@@ -119,6 +119,7 @@ public final class GameView extends View{
         SingleScene.instance = new SingleScene();
         AccountScene.instance = new AccountScene();
         MultiplayerScene.instance = new MultiplayerScene();
+        MenuScene.instance = new MenuScene(this);
     }
     private int getNavigationSize() {
         if (!checked) {
