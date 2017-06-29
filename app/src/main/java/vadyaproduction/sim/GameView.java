@@ -9,9 +9,14 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+import view.AccountScene;
+import view.HelpScene;
 import view.IntroScene;
+import view.LeaderBoardScene;
 import view.MenuScene;
 import model.scenes.Scene;
+import view.MultiplayerScene;
+import view.SingleScene;
 
 public final class GameView extends View{
     private static final int InvalidPointerId = -1;
@@ -26,6 +31,12 @@ public final class GameView extends View{
     public static float centerX;
     public static float centerY;
     public static float factor = 1;
+    public MenuScene mMenu;
+    public HelpScene helpScene;
+    public LeaderBoardScene leaderBoardScene;
+    public MultiplayerScene multiplayerScene;
+    public SingleScene singleScene;
+    public AccountScene accountScene;
     private static boolean checked = false;
     public Scene activeScene;
     public Resources res = getResources();
@@ -67,9 +78,12 @@ public final class GameView extends View{
         factor = Math.max((float) width / mainWidth, (float) heigth / mainHidth);
         Bitmap bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
                 R.drawable.intro), (int) (factor * mainWidth), (int) (factor * mainHidth), false);
-        MenuScene mMenu = new MenuScene(this);
+        mMenu = new MenuScene(this);
         introScene = new IntroScene(bitmap, this, mMenu);
-
+        helpScene = new HelpScene(this);
+        leaderBoardScene = new LeaderBoardScene();
+        singleScene = new SingleScene();
+        accountScene = new AccountScene();
     }
 
     @Override

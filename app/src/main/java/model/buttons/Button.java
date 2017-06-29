@@ -5,6 +5,7 @@ import android.graphics.ColorFilter;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
+import model.scenes.Scene;
 
 import model.DrawableElement;
 
@@ -20,12 +21,14 @@ public class Button extends DrawableElement implements IButton {
     private boolean wasClicked;
     private boolean isReal = false;
     private float factor;
+    public Scene target;
     public void setBig(boolean isbig)
     {
         isBig = isbig;
     }
-    public Button(float x1, float y1, float x2, float y2, float factor, boolean isReal)
+    public Button(float x1, float y1, float x2, float y2, float factor, boolean isReal, Scene target)
     {
+        this.target = target;
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;

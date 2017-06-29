@@ -3,7 +3,6 @@ import android.graphics.Canvas;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.graphics.Bitmap;
 import android.view.animation.DecelerateInterpolator;
 
 import java.util.ArrayList;
@@ -66,16 +65,14 @@ public class Scene implements IScene {
     public void justTap(float x, float y) {
         for (DrawableElement btn : drawableElements)
             if (btn instanceof Button)
-                ((Button) btn).isThisButtonTap(x, y);
-        view.invalidate();
-
-
+                if (((Button) btn).isThisButtonTap(x, y))
+                    view.activeScene = ((Button) btn).target;
     }
 
     public void movedTouch(float x1, float y1, float x2, float y2) {
         for (DrawableElement btn : drawableElements)
             if (btn instanceof Button)
-                ((Button) btn).isThisButtonMove(x1, y1, x2, y2);
-        view.invalidate();
+                if (((Button) btn).isThisButtonMove(x1, y1, x2, y2))
+                    view.activeScene = ((Button) btn).target;
     }
 }
