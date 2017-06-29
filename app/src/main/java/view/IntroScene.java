@@ -61,7 +61,6 @@ public final class IntroScene extends Scene {
             }
         }.start();
     }
-    @Override
     public void hide()
     {
         view.setActiveScene(menuSc);
@@ -80,11 +79,9 @@ public final class IntroScene extends Scene {
     {
         return;
     }
-    @Override
     public void movedTouch(float x1, float y1, float x2, float y2) {
         return;
     }
-    @Override
     public void justTap(float x, float y){
         return;
     }

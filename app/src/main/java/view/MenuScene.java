@@ -2,12 +2,14 @@ package view;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+
+import model.DrawableElement;
 import model.scenes.Scene;
 import model.buttons.Button;
 import vadyaproduction.sim.GameView;
 import vadyaproduction.sim.R;
 import model.Bitmaps;
-
+import android.util.*;
 import android.view.animation.*;
 
 import java.sql.BatchUpdateException;
@@ -23,6 +25,7 @@ public final class MenuScene extends Scene {
     private Button multiplayerButton;
     private Button leaderBoardButton;
     private Button accountButton;
+    private static final String debug = "kek";
     public MenuScene(GameView view) {
         this.view = view;
         initFields();
@@ -33,16 +36,16 @@ public final class MenuScene extends Scene {
                 R.drawable.menu), (int) (view.factor * view.mainWidth),
                 (int) (view.factor * view.mainHidth), false);
         aboutButton = new Button((float)(view.mainWidth * 0.388), (float)(view.mainHidth * 0.844),
-                (float)(view.mainWidth * 0.611), (float)(view.mainHidth * 0.963), view.factor, false, HelpScene.instance);
+                (float)(view.mainWidth * 0.611), (float)(view.mainHidth * 0.963), view.factor, false);
         accountButton = new Button((float)(view.mainWidth * 0.056), (float)(view.mainHidth * 0.03),
-                (float)(view.mainWidth * 0.35), (float)(view.mainHidth * 0.147), view.factor, false, AccountScene.instance);
+                (float)(view.mainWidth * 0.35), (float)(view.mainHidth * 0.147), view.factor, false);
         leaderBoardButton = new Button((float)(view.mainWidth * 0.615), (float)(view.mainHidth * 0.034),
-                (float)(view.mainWidth * 0.914), (float)(view.mainHidth * 0.151), view.factor, false, LeaderBoardScene.instance);
+                (float)(view.mainWidth * 0.914), (float)(view.mainHidth * 0.151), view.factor, false);
         singleButton = new Button((float)(view.mainWidth * 0.240), (float)(view.mainHidth * 0.207),
-                (float)(view.mainWidth * 0.753), (float)(view.mainHidth * 0.474), view.factor, false, SingleScene.instance);
+                (float)(view.mainWidth * 0.753), (float)(view.mainHidth * 0.474), view.factor, false);
         singleButton.setBig(true);
         multiplayerButton = new Button((float)(view.mainWidth * 0.240), (float)(view.mainHidth * 0.520),
-                (float)(view.mainWidth * 0.753), (float)(view.mainHidth * 0.788), view.factor, false, MultiplayerScene.instance);
+                (float)(view.mainWidth * 0.753), (float)(view.mainHidth * 0.788), view.factor, false);
         multiplayerButton.setBig(true);
 
         Bitmaps bitmaps = new Bitmaps(mbitmap);
@@ -52,5 +55,23 @@ public final class MenuScene extends Scene {
         drawableElements.add(singleButton);
         drawableElements.add(leaderBoardButton);
         drawableElements.add(accountButton);
+    }
+    @Override
+    public void justTap(float x, float y) {
+        for (DrawableElement btn : drawableElements)
+            if (btn instanceof Button)
+                if (((Button) btn).isThisButtonTap(x, y) && btn == aboutButton) {
+                    this.hide(HelpScene.instance);
+                    view.getActiveScene().show();
+                }
+    }
+    @Override
+    public void movedTouch(float x1, float y1, float x2, float y2) {
+        for (DrawableElement btn : drawableElements)
+            if (btn instanceof Button)
+                if (((Button) btn).isThisButtonMove(x1, y1, x2, y2) && btn == aboutButton) {
+                    this.hide(HelpScene.instance);
+                    view.getActiveScene().show();
+                }
     }
 }

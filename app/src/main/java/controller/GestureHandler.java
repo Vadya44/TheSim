@@ -11,10 +11,10 @@ import model.scenes.*;
 
 public final class GestureHandler extends Handler {
     public void justTap(float x, float y){
-     mactiveScene.justTap(x, y);
+     //mactiveScene.justTap(x, y);
     }
     public void movedTouch(float x1, float y1, float x2, float y2){
-        mactiveScene.movedTouch(x1,y1,x2,y2);
+       // mactiveScene.movedTouch(x1,y1,x2,y2);
     }
     private Scene mactiveScene;
     public void setScene(Scene sc){

@@ -1,5 +1,6 @@
 package model.scenes;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -15,7 +16,7 @@ import vadyaproduction.sim.GameView;
  * Created by Vadya on 23.06.17.
  */
 
-public class Scene implements IScene {
+public class Scene {
     protected ArrayList<DrawableElement> drawableElements = new ArrayList<DrawableElement>();
     protected GameView view;
 
@@ -31,11 +32,18 @@ public class Scene implements IScene {
         }, 500);
     }
 
-    public void hide() {
+    public void hide(Scene scene) {
         final Animation fadeIn = new AlphaAnimation(1, 0);
         fadeIn.setInterpolator(new DecelerateInterpolator());
         fadeIn.setDuration(500);
         view.startAnimation(fadeIn);
+        final Scene locScene = scene;
+        view.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                view.setActiveScene(locScene);
+            }
+        }, 500);
     }
 
     public void onDraw(Canvas canvas) {
@@ -61,22 +69,9 @@ public class Scene implements IScene {
                 ((Button)btn).setWasClicked(false);
         view.invalidate();
     }
-
     public void justTap(float x, float y) {
-        for (DrawableElement btn : drawableElements)
-            if (btn instanceof Button)
-                if (((Button) btn).isThisButtonTap(x, y)) {
-                        this.hide();
-                        view.setActiveScene(((Button) btn).getTarget());
-                    }
     }
 
     public void movedTouch(float x1, float y1, float x2, float y2) {
-        for (DrawableElement btn : drawableElements)
-            if (btn instanceof Button)
-                if (((Button) btn).isThisButtonMove(x1, y1, x2, y2)) {
-                    this.hide();
-                    view.setActiveScene(((Button) btn).getTarget());
-                }
     }
 }
