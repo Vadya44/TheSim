@@ -84,6 +84,7 @@ public final class GameView extends View{
         leaderBoardScene = new LeaderBoardScene();
         singleScene = new SingleScene();
         accountScene = new AccountScene();
+        multiplayerScene = new MultiplayerScene();
     }
 
     @Override
