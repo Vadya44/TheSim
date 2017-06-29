@@ -9,10 +9,6 @@ import model.buttons.Button;
 import vadyaproduction.sim.GameView;
 import vadyaproduction.sim.R;
 import model.Bitmaps;
-import android.util.*;
-import android.view.animation.*;
-
-import java.sql.BatchUpdateException;
 
 /**
  * Created by Vadya on 24.06.17.
@@ -60,19 +56,29 @@ public final class MenuScene extends Scene {
     @Override
     public void justTap(float x, float y) {
         for (DrawableElement btn : drawableElements)
-            if (btn instanceof Button)
+            if (btn instanceof Button) {
                 if (((Button) btn).isThisButtonTap(x, y) && btn == aboutButton) {
                     this.hide(HelpScene.instance);
                     view.getActiveScene().show();
                 }
+                if (((Button) btn).isThisButtonTap(x, y) && btn == singleButton) {
+                    this.hide(SingleScene.instance);
+                    view.getActiveScene().show();
+                }
+            }
     }
     @Override
     public void movedTouch(float x1, float y1, float x2, float y2) {
         for (DrawableElement btn : drawableElements)
-            if (btn instanceof Button)
+            if (btn instanceof Button) {
                 if (((Button) btn).isThisButtonMove(x1, y1, x2, y2) && btn == aboutButton) {
                     this.hide(HelpScene.instance);
                     view.getActiveScene().show();
                 }
+                if (((Button) btn).isThisButtonMove(x1, y1, x2, y2) && btn == singleButton) {
+                    this.hide(SingleScene.instance);
+                    view.getActiveScene().show();
+                }
+            }
     }
 }
