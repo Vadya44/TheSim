@@ -68,7 +68,6 @@ public class Scene implements IScene {
                 if (((Button) btn).isThisButtonTap(x, y)) {
                         this.hide();
                         view.setActiveScene(((Button) btn).getTarget());
-                        view.getActiveScene().show();
                     }
     }
 
@@ -78,7 +77,6 @@ public class Scene implements IScene {
                 if (((Button) btn).isThisButtonMove(x1, y1, x2, y2)) {
                     this.hide();
                     view.setActiveScene(((Button) btn).getTarget());
-                    view.getActiveScene().show();
                 }
     }
 }

@@ -14,6 +14,7 @@ import vadyaproduction.sim.GameView;
 
 public final class HelpScene extends Scene implements IScene {
 
+    public static HelpScene instance;
     public HelpScene(GameView view) {
         this.view = view;
         initFields();

@@ -32,10 +32,6 @@ public final class GameView extends View{
     public static float centerY;
     public static float factor = 1;
     public MenuScene mMenu;
-    public HelpScene helpScene;
-    public LeaderBoardScene leaderBoardScene;
-    public MultiplayerScene multiplayerScene;
-    public SingleScene singleScene;
     public AccountScene accountScene;
     private static boolean checked = false;
     private Scene activeScene;
@@ -118,11 +114,11 @@ public final class GameView extends View{
     }
     public void initScenes()
     {
-        helpScene = new HelpScene(this);
-        leaderBoardScene = new LeaderBoardScene();
-        singleScene = new SingleScene();
-        accountScene = new AccountScene();
-        multiplayerScene = new MultiplayerScene();
+        HelpScene.instance = new HelpScene(this);
+        LeaderBoardScene.instance = new LeaderBoardScene();
+        SingleScene.instance = new SingleScene();
+        AccountScene.instance = new AccountScene();
+        MultiplayerScene.instance = new MultiplayerScene();
     }
     private int getNavigationSize() {
         if (!checked) {

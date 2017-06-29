@@ -8,4 +8,6 @@ import model.scenes.IScene;
  */
 
 public final class SingleScene extends Scene implements IScene {
+    public static SingleScene instance;
+
 }

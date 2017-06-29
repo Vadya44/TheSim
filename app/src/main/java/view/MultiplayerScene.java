@@ -8,4 +8,6 @@ import model.scenes.IScene;
  */
 
 public final class MultiplayerScene extends Scene implements IScene {
+    public static MultiplayerScene instance;
+
 }

@@ -8,4 +8,5 @@ import model.scenes.IScene;
  */
 
 public final class LeaderBoardScene extends Scene implements IScene {
+    public static LeaderBoardScene instance;
 }
