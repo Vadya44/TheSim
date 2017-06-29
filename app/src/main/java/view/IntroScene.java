@@ -35,7 +35,7 @@ public final class IntroScene extends Scene {
     @Override
     public void show()
     {
-        view.activeScene = this;
+        view.setActiveScene(this);
         final Animation fadeIn = new AlphaAnimation(1, 0);
         fadeIn.setInterpolator(new DecelerateInterpolator());
         fadeIn.setDuration(1000);
@@ -64,7 +64,7 @@ public final class IntroScene extends Scene {
     @Override
     public void hide()
     {
-        view.activeScene = menuSc;
+        view.setActiveScene(menuSc);
         view.invalidate();
     }
     /**

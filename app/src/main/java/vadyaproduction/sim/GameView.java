@@ -38,16 +38,10 @@ public final class GameView extends View{
     public SingleScene singleScene;
     public AccountScene accountScene;
     private static boolean checked = false;
-    public Scene activeScene;
+    private Scene activeScene;
     public Resources res = getResources();
-    // Classes
     private IntroScene introScene;
-    //private GestureHandler gestureHandler;
 
-    //public void setActiveScene4Handler()
-    //{
-    //    gestureHandler = new GestureHandler(activeScene);
-    //}
     public GameView(Context context) {
         super(context);
         init(null, 0);
@@ -80,11 +74,7 @@ public final class GameView extends View{
                 R.drawable.intro), (int) (factor * mainWidth), (int) (factor * mainHidth), false);
         mMenu = new MenuScene(this);
         introScene = new IntroScene(bitmap, this, mMenu);
-        helpScene = new HelpScene(this);
-        leaderBoardScene = new LeaderBoardScene();
-        singleScene = new SingleScene();
-        accountScene = new AccountScene();
-        multiplayerScene = new MultiplayerScene();
+        initScenes();
     }
 
     @Override
@@ -128,7 +118,11 @@ public final class GameView extends View{
     }
     public void initScenes()
     {
-
+        helpScene = new HelpScene(this);
+        leaderBoardScene = new LeaderBoardScene();
+        singleScene = new SingleScene();
+        accountScene = new AccountScene();
+        multiplayerScene = new MultiplayerScene();
     }
     private int getNavigationSize() {
         if (!checked) {
@@ -140,5 +134,13 @@ public final class GameView extends View{
             }
             return 0;
         } else return 0;
+    }
+    public void setActiveScene(Scene scene)
+    {
+        this.activeScene = scene;
+    }
+    public Scene getActiveScene()
+    {
+        return  activeScene;
     }
 }

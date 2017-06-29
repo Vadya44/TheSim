@@ -3,6 +3,7 @@ package view;
 import android.graphics.Canvas;
 import android.graphics.Color;
 
+import model.DrawableElement;
 import model.scenes.Scene;
 import model.scenes.IScene;
 import vadyaproduction.sim.GameView;

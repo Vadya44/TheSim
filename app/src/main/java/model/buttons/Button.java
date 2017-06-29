@@ -21,7 +21,11 @@ public class Button extends DrawableElement implements IButton {
     private boolean wasClicked;
     private boolean isReal = false;
     private float factor;
-    public Scene target;
+    private Scene target;
+    public Scene getTarget()
+    {
+        return  target;
+    }
     public void setBig(boolean isbig)
     {
         isBig = isbig;

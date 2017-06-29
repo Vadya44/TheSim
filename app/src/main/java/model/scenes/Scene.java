@@ -65,14 +65,20 @@ public class Scene implements IScene {
     public void justTap(float x, float y) {
         for (DrawableElement btn : drawableElements)
             if (btn instanceof Button)
-                if (((Button) btn).isThisButtonTap(x, y))
-                    view.activeScene = ((Button) btn).target;
+                if (((Button) btn).isThisButtonTap(x, y)) {
+                        this.hide();
+                        view.setActiveScene(((Button) btn).getTarget());
+                        view.getActiveScene().show();
+                    }
     }
 
     public void movedTouch(float x1, float y1, float x2, float y2) {
         for (DrawableElement btn : drawableElements)
             if (btn instanceof Button)
-                if (((Button) btn).isThisButtonMove(x1, y1, x2, y2))
-                    view.activeScene = ((Button) btn).target;
+                if (((Button) btn).isThisButtonMove(x1, y1, x2, y2)) {
+                    this.hide();
+                    view.setActiveScene(((Button) btn).getTarget());
+                    view.getActiveScene().show();
+                }
     }
 }
