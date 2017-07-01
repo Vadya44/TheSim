@@ -32,15 +32,14 @@ public final class SingleScene extends Scene {
         Bitmaps bitmaps = new Bitmaps(bitmap);
         backButton = new Button((float)(view.mainWidth * 0.067), (float)(view.mainHidth * 0.037),
                 (float)(view.mainWidth * 0.388), (float)(view.mainHidth * 0.111), view.factor, false);
-        easyButton = new Button((float)(view.mainWidth * 0.245), (float)(view.mainHidth * 0.339),
+        easyButton = new Button((float)(view.mainWidth * 0.245), (float)(view.mainHidth * 0.293),
                 (float)(view.mainWidth * 0.764), (float)(view.mainHidth * 0.423), view.factor, false);
         mediumButton = new Button((float)(view.mainWidth * 0.243), (float)(view.mainHidth * 0.522),
                 (float)(view.mainWidth * 0.760), (float)(view.mainHidth * 0.653), view.factor, false);
-
+        drawableElements.add(bitmaps);
         drawableElements.add(backButton);
         drawableElements.add(easyButton);
         drawableElements.add(mediumButton);
-        drawableElements.add(bitmaps);
     }
     @Override
     public void justTap(float x, float y) {
