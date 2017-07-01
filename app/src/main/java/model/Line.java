@@ -9,6 +9,6 @@ import android.graphics.Canvas;
 public class Line extends DrawableElement {
     @Override
     public void onDraw(Canvas canvas) {
-        
+
     }
 }
