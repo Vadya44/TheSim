@@ -49,6 +49,16 @@ public final class SingleScene extends Scene {
                     this.hide(MenuScene.instance);
                     view.getActiveScene().show();
                 }
+                if (((Button) btn).isThisButtonTap(x, y) && btn == easyButton) {
+                    GameProcess.instance = new GameProcess(view, 8);
+                    this.hide(GameProcess.instance);
+                    view.getActiveScene().show();
+                }
+                if (((Button) btn).isThisButtonTap(x, y) && btn == mediumButton) {
+                    GameProcess.instance = new GameProcess(view, 10);
+                    this.hide(GameProcess.instance);
+                    view.getActiveScene().show();
+                }
             }
     }
     @Override
@@ -57,6 +67,16 @@ public final class SingleScene extends Scene {
             if (btn instanceof Button) {
                 if (((Button) btn).isThisButtonMove(x1, y1, x2, y2) && btn == backButton) {
                     this.hide(MenuScene.instance);
+                    view.getActiveScene().show();
+                }
+                if (((Button) btn).isThisButtonMove(x1, y1, x2, y2) && btn == easyButton) {
+                    GameProcess.instance = new GameProcess(view, 8);
+                    this.hide(GameProcess.instance);
+                    view.getActiveScene().show();
+                }
+                if (((Button) btn).isThisButtonMove(x1, y1, x2, y2) && btn == mediumButton) {
+                    GameProcess.instance = new GameProcess(view, 10);
+                    this.hide(GameProcess.instance);
                     view.getActiveScene().show();
                 }
             }
