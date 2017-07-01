@@ -1,6 +1,5 @@
 package model.scenes;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
