@@ -32,7 +32,6 @@ public final class GameView extends View{
     public static float centerY;
     public static float factor = 1;
     public MenuScene mMenu;
-    public AccountScene accountScene;
     private static boolean checked = false;
     private Scene activeScene;
     public Resources res = getResources();
@@ -116,7 +115,7 @@ public final class GameView extends View{
     {
         HelpScene.instance = new HelpScene(this);
         LeaderBoardScene.instance = new LeaderBoardScene();
-        SingleScene.instance = new SingleScene();
+        SingleScene.instance = new SingleScene(this);
         AccountScene.instance = new AccountScene();
         MultiplayerScene.instance = new MultiplayerScene();
         MenuScene.instance = new MenuScene(this);

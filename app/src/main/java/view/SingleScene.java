@@ -17,10 +17,50 @@ import android.view.animation.*;
 
 public final class SingleScene extends Scene {
     public static SingleScene instance;
-    @Override
-    public  void onDraw(Canvas canvas)
+    private Button backButton;
+    private Button easyButton;
+    private Button mediumButton;
+    public SingleScene(GameView view) {
+        this.view = view;
+        initFields();
+    }
+    private void initFields()
     {
-        canvas.drawColor(Color.WHITE);
+        Bitmap bitmap =  Bitmap.createScaledBitmap(BitmapFactory.decodeResource(view.res,
+                R.drawable.single), (int) (view.factor * view.mainWidth),
+                (int) (view.factor * view.mainHidth), false);
+        Bitmaps bitmaps = new Bitmaps(bitmap);
+        backButton = new Button((float)(view.mainWidth * 0.067), (float)(view.mainHidth * 0.037),
+                (float)(view.mainWidth * 0.388), (float)(view.mainHidth * 0.111), view.factor, false);
+        easyButton = new Button((float)(view.mainWidth * 0.245), (float)(view.mainHidth * 0.339),
+                (float)(view.mainWidth * 0.764), (float)(view.mainHidth * 0.423), view.factor, false);
+        mediumButton = new Button((float)(view.mainWidth * 0.243), (float)(view.mainHidth * 0.522),
+                (float)(view.mainWidth * 0.760), (float)(view.mainHidth * 0.653), view.factor, false);
+
+        drawableElements.add(backButton);
+        drawableElements.add(easyButton);
+        drawableElements.add(mediumButton);
+        drawableElements.add(bitmaps);
+    }
+    @Override
+    public void justTap(float x, float y) {
+        for (DrawableElement btn : drawableElements)
+            if (btn instanceof Button) {
+                if (((Button) btn).isThisButtonTap(x, y) && btn == backButton) {
+                    this.hide(MenuScene.instance);
+                    view.getActiveScene().show();
+                }
+            }
+    }
+    @Override
+    public void movedTouch(float x1, float y1, float x2, float y2) {
+        for (DrawableElement btn : drawableElements)
+            if (btn instanceof Button) {
+                if (((Button) btn).isThisButtonMove(x1, y1, x2, y2) && btn == backButton) {
+                    this.hide(MenuScene.instance);
+                    view.getActiveScene().show();
+                }
+            }
     }
 
 }

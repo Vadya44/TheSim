@@ -5,7 +5,6 @@ import android.graphics.ColorFilter;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
-import model.scenes.Scene;
 
 import model.DrawableElement;
 
