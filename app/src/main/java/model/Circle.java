@@ -12,6 +12,16 @@ public class Circle extends DrawableElement {
     private int y;
     private double radius;
     private Paint p;
+    public double Radius() {
+        return  radius;
+    }
+    public int X(){
+        return x;
+    }
+    public int Y()
+    {
+        return  y;
+    }
     public Circle()
     {
         x = 720 / 2;

@@ -46,6 +46,27 @@ public final class GameProcess extends Scene {
         _usedLines = new ArrayList<Line>();
         _points = new ArrayList<Point>();
         Circle circle = new Circle();
-        _points = 
+        _points =  CreatePoints(this.counter, circle, 720);
+    }
+
+
+
+
+
+    public static ArrayList<Point> CreatePoints(int number, Circle circle, int px)
+    {
+        Point[] _arr = new Point[number];
+        for (int i = 0, alpha = 0; i < number; i++)
+        {
+            alpha += 360 / number;
+            int rx = circle.X() - circle.X();
+            int ry = circle.Y() + circle.Radius - circle.Y();
+            double c = Math.Cos(Methods.DegreeToRadian(alpha));
+            double s = Math.Sin(Methods.DegreeToRadian(alpha));
+            int x1 = (int)(circle.X + rx * c - ry * s);
+            int y1 = (int)(circle.Y + rx * s + ry * c);
+            _arr[i] = new Point(x1, y1, clr);
+        }
+        return _arr;
     }
 }
