@@ -23,6 +23,9 @@ import vadyaproduction.sim.GameView;
  * Created by Vadya on 01.07.17.
  */
 
+/*
+ * TODO: Need to solve how to make points pulsing and etc tasks developing
+ */
 public final class GameProcess extends Scene {
 
     private int _ind1, _ind2, _ind3;
@@ -55,18 +58,22 @@ public final class GameProcess extends Scene {
 
     public static ArrayList<Point> CreatePoints(int number, Circle circle, int px)
     {
-        Point[] _arr = new Point[number];
+        ArrayList<Point> _arr = new ArrayList<Point>();
         for (int i = 0, alpha = 0; i < number; i++)
         {
             alpha += 360 / number;
             int rx = circle.X() - circle.X();
-            int ry = circle.Y() + circle.Radius - circle.Y();
-            double c = Math.Cos(Methods.DegreeToRadian(alpha));
-            double s = Math.Sin(Methods.DegreeToRadian(alpha));
-            int x1 = (int)(circle.X + rx * c - ry * s);
-            int y1 = (int)(circle.Y + rx * s + ry * c);
-            _arr[i] = new Point(x1, y1, clr);
+            int ry = circle.Y() + (int)circle.Radius() - circle.Y();
+            double c = Math.cos(DegreeToRadian(alpha));
+            double s = Math.sin(DegreeToRadian(alpha));
+            int x1 = (int)(circle.X() + rx * c - ry * s);
+            int y1 = (int)(circle.Y() + rx * s + ry * c);
+            _arr.add(new Point(x1, y1, ));
         }
         return _arr;
+    }
+    private static double DegreeToRadian(double angle)
+    {
+        return Math.PI * angle / 180.0;
     }
 }
