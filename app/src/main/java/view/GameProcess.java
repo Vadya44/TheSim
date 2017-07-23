@@ -68,7 +68,7 @@ public final class GameProcess extends Scene {
             double s = Math.sin(DegreeToRadian(alpha));
             int x1 = (int)(circle.X() + rx * c - ry * s);
             int y1 = (int)(circle.Y() + rx * s + ry * c);
-            _arr.add(new Point(x1, y1, ));
+            _arr.add(new Point(x1, y1));
         }
         return _arr;
     }

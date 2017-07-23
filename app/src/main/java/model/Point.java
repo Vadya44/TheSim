@@ -21,7 +21,6 @@ public class Point extends DrawableElement implements Comparable<Point> {
     private boolean used;
     private int x;
     private int y;
-    private Color color;
     private Paint paint;
     public int getX()
     {
@@ -45,18 +44,10 @@ public class Point extends DrawableElement implements Comparable<Point> {
     {
         this.used = used;
     }
-    public Color getColor()
-    {
-        return color;
-    }
-    public void setColor(Color color) {
-        this.color = color;
-    }
-    public Point(int px, int py, Color color)
+    public Point(int px, int py)
     {
         x = px;
         y = py;
-        this.color = color;
         this.used = false;
         initPaint();
     }
