@@ -6,10 +6,9 @@ import model.Point;
 import model.scenes.Scene;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.view.animation.AccelerateInterpolator;
+import android.view.animation.*;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.DecelerateInterpolator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,17 +43,33 @@ public final class GameProcess extends Scene {
     {
         this.view = view;
         this.counter = counter;
+        init();
+    }
+
+
+    @Override
+    public void onDraw(Canvas canvas) {
+        canvas.drawColor(Color.WHITE);
+        if (!drawableElements.isEmpty()) {
+            for (DrawableElement ele : drawableElements)
+                ele.onDraw(canvas);
+        }
+
+    }
+
+    private void init()
+    {
         _plLines = new ArrayList<Line>();
         _botLines = new ArrayList<Line>();
         _usedLines = new ArrayList<Line>();
         _points = new ArrayList<Point>();
         Circle circle = new Circle();
+        drawableElements.add(circle);
         _points =  CreatePoints(this.counter, circle, 720);
+        for (Point p: _points) {
+            drawableElements.add(p);
+        }
     }
-
-
-
-
 
     public static ArrayList<Point> CreatePoints(int number, Circle circle, int px)
     {

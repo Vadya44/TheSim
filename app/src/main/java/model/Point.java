@@ -55,10 +55,15 @@ public class Point extends DrawableElement implements Comparable<Point> {
     public void initPaint()
     {
         paint = new Paint();
+        paint.setStyle(Paint.Style.FILL);
+        paint.setAntiAlias(true);
+        paint.setColor(Color.BLACK);
+        paint.setStrokeWidth(2);
     }
+
     @Override
     public void onDraw(Canvas canvas) {
-
+        canvas.drawCircle(x * GameView.factor, y * GameView.factor, 720 / 50 * GameView.factor, paint);
     }
 
     @Override
